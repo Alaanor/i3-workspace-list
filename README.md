@@ -44,3 +44,22 @@ Workspace { id: 94120323095728, num: 2, name: "2", visible: true, focused: true,
 > i3-workspace-list --num 2 | wc -l
 1
 ```
+
+### Example with eww
+
+```xml
+<script-var name="workspace_1_open" interval="1s">i3-workspace-list --num 1 | wc -l</script-var>
+<script-var name="workspace_2_open" interval="1s">i3-workspace-list --num 2 | wc -l</script-var>
+<script-var name="workspace_3_open" interval="1s">i3-workspace-list --num 3 | wc -l</script-var>
+...
+
+<script-var name="workspace_1_visible" interval="1s">i3-workspace-list --num 1 --visible true | wc -l</script-var>
+<script-var name="workspace_2_visible" interval="1s">i3-workspace-list --num 2 --visible true | wc -l</script-var>
+<script-var name="workspace_3_visible" interval="1s">i3-workspace-list --num 3 --visible true | wc -l</script-var>
+...
+
+<label class="w-{{workspace_1_visible}}" text="{{ if workspace_1_open == 1 then '' else '' }}"/>
+...
+```
+
+[Full example at eww.xml](https://github.com/Alaanor/dotfiles/blob/ade2559985a7ac33787df611c4ed52e2fd23fa5b/.config/eww/eww.xml)
